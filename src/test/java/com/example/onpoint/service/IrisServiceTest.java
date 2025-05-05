@@ -4,13 +4,27 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 @SpringBootTest
 public class IrisServiceTest {
 
     @Autowired
     private IrisService irisService;
+
+    @Test
+    void getUniqueSpecies() {
+        List<String> expectedSpecies = Arrays.asList("Iris-setosa", "Iris-versicolor", "Iris-virginica");
+        List<String> actualSpecies = irisService.getUniqueSpecies();
+        assertEquals(expectedSpecies.size(), actualSpecies.size(),
+                "Number of unique species should match");
+        assertIterableEquals(expectedSpecies, actualSpecies,
+                "Unique species list should contain Iris-setosa, Iris-versicolor, and Iris-virginica");
+    }
 
     @Test
     void testGetAverageSepalLength() {
