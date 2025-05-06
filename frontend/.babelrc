@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "prop-types",
+        "libraryDirectory": "",
+        "camel2DashComponentName": false
+      },
+      "prop-types"
+    ]
+  ]
+}

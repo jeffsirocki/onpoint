@@ -3,7 +3,14 @@ import axios from 'axios';
 import IrisD3ScatterPlot from './IrisD3ScatterPlot.jsx'
 import PropTypes from "prop-types";
 
-function App() {
+App.propTypes = {
+    initialCurrentUser: PropTypes.shape({}),
+};
+App.defaultProps = {
+    initialCurrentUser: {},
+};
+
+function App({ initialCurrentUser }) {
     const [data, setData] = useState('');
 
     useEffect(() => {
