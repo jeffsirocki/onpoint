@@ -4,7 +4,7 @@ This sample Full Stack React + Spring Boot application showcases a simple data v
 # To get started
 1. Clone the repository
 2. Install any dependencies with `gradle build`
-3. Then run the Spring Boot application with `gradle bootRun`.
+3. Then run the Spring Boot application with `gradle bootRun`
 
 # Once the server is running
 Navigate to localhost:8080 to view the frontend React UI. 
