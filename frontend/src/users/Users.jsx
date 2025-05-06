@@ -30,6 +30,21 @@ const Users = () => {
         setIsModalOpen(false);
     };
 
+    const handleDelete = async (userId) => {
+        if (!window.confirm('Are you sure you want to delete this user?')) return;
+
+        try {
+            const response = await fetch(`/api/users/${userId}`, {
+              method: 'DELETE',
+            });
+            if (!response.ok) throw new Error('Failed to delete user');
+
+            setUsers(prev => prev.filter(user => user.id !== userId));
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+
     return (
         <div className="container mx-auto pt-6 sm:pt-8 px-4 sm:px-6">
             <div className="bg-gradient-to-b from-white to-gray-50 p-6 sm:p-8 rounded-xl shadow-md border border-gray-100">
@@ -59,6 +74,7 @@ const Users = () => {
                                     <th className="px-4 py-2 text-left text-sm font-semibold text-gray-600">ID</th>
                                     <th className="px-4 py-2 text-left text-sm font-semibold text-gray-600">Username</th>
                                     <th className="px-4 py-2 text-left text-sm font-semibold text-gray-600">Email</th>
+                                    <th className="px-4 py-2 text-left text-sm font-semibold text-gray-600"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,6 +83,14 @@ const Users = () => {
                                         <td className="px-4 py-2 text-sm text-gray-700">{user.id}</td>
                                         <td className="px-4 py-2 text-sm text-gray-700">{user.username}</td>
                                         <td className="px-4 py-2 text-sm text-gray-700">{user.email}</td>
+                                        <td className="px-4 py-2 text-sm">
+                                            <button
+                                                onClick={() => handleDelete(user.id)}
+                                                className="bg-red-600 text-white font-semibold py-1 px-3 rounded-md hover:bg-red-700 transition-all duration-200"
+                                            >
+                                                Delete
+                                            </button>
+                                        </td>
                                     </tr>
                                 ))}
                                 </tbody>
