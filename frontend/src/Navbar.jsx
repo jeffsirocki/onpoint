@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +9,8 @@ const Navbar = () => {
             <div className="container mx-auto px-4 py-3 flex justify-between items-center">
                 <div className="text-xl font-bold">React + Spring Boot</div>
                 <div className="hidden md:flex space-x-4">
-                    <a href="#" className="hover:text-gray-200">Settings</a>
+                    <Link to="/" className="hover:text-gray-200" aria-current="page">Home</Link>
+                    <Link to="/users" className="hover:text-gray-200">Users</Link>
                 </div>
                 <button
                     className="md:hidden focus:outline-none"
@@ -21,7 +23,8 @@ const Navbar = () => {
             </div>
             {isOpen && (
                 <div className="md:hidden bg-blue-700">
-                    <a href="#" className="block px-4 py-2 hover:bg-blue-800">Settings</a>
+                    <Link to="/" className="hover:text-gray-200" aria-current="page">Home</Link>
+                    <Link to="/users" className="hover:text-gray-200">Users</Link>
                 </div>
             )}
         </nav>
