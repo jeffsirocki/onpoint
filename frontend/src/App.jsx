@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import IrisScatterPlot from './IrisScatterPlot.jsx'
+import IrisD3ScatterPlot from './IrisD3ScatterPlot.jsx'
+import PropTypes from "prop-types";
 
 function App() {
     const [data, setData] = useState('');
@@ -17,7 +18,7 @@ function App() {
                 <h1 className="text-2xl font-bold mb-4">React + Spring Boot</h1>
                 <p className="text-lg">Message from backend:</p>
                 {data.length > 0 ? (
-                    <IrisScatterPlot data={data} />
+                    <IrisD3ScatterPlot data={data} />
                 ) : (
                     <p>Loading data...</p>
                 )}
